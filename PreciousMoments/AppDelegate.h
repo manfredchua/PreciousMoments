@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class PMRootViewController;
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (nonatomic, retain) PMRootViewController *rootVC;
 @end

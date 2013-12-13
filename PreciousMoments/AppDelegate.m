@@ -7,12 +7,14 @@
 //
 
 #import "AppDelegate.h"
+#import "PMRootViewController.h"
 
 @implementation AppDelegate
-
+@synthesize rootVC;
 - (void)dealloc
 {
     [_window release];
+    [rootVC release];
     [super dealloc];
 }
 
@@ -20,7 +22,15 @@
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.backgroundColor = [UIColor blackColor];
+    
+    rootVC=[[PMRootViewController alloc] init];
+    self.window.rootViewController=rootVC;
+    
+    //----init Database---
+    [[DatabaseOperator shareDatabaseOperator] openDBAndCreateTable];
+    
+    self.window.userInteractionEnabled=YES;
     [self.window makeKeyAndVisible];
     return YES;
 }
